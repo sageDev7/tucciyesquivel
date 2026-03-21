@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>Áreas de Práctica — Tucci & Esquivel | Empresa, Familia y Sucesiones</title>
+  <meta name="description" content="Derecho de Empresa, Familia y Sucesiones. Tucci & Esquivel Estudio Jurídico. Vicente López, Buenos Aires."/>
+  <link rel="icon" href="./logo-te.png" type="image/png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --navy:      #1b3150;
+      --navy-deep: #162843;
+      --navy-lt:   #234070;
+      --gold:      #c99447;
+      --gold-dark: #a46e29;
+      --gold-lt:   #d4a85e;
+      --bg:        #f7f5f0;
+      --bg-warm:   #f0ede6;
+      --ivory:     #faf9f6;
+      --mid:       #5a5750;
+      --soft:      #8c8981;
+      --rule:      rgba(27,49,80,.12);
+      --rule-gold: rgba(201,148,71,.28);
+      --display:   'Cormorant Garamond', serif;
+      --body:      'DM Sans', sans-serif;
+    }
+
+    /* ── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { overflow-x:hidden; scroll-behavior:smooth; }
+    body { font-family:var(--body); background:var(--bg); color:var(--navy-deep); overflow-x:hidden; max-width:100vw; }
+    img { display:block; max-width:100%; height:auto; }
+    a { text-decoration:none; color:inherit; }
+
+    /* ── SHARED ─────────────────────────────────────── */
+    .eyebrow {
+      font-family:var(--body); font-size:.60rem; font-weight:600;
+      letter-spacing:.36em; text-transform:uppercase;
+      color:var(--gold); display:flex; align-items:center; gap:.7rem;
+    }
+    .eyebrow::before { content:''; display:inline-block; width:26px; height:1px; background:var(--gold); flex-shrink:0; }
+    .eyebrow-lt::before { background:rgba(201,148,71,.85); }
+    .eyebrow-lt { color:rgba(201,148,71,.85); }
+    .eyebrow-center { justify-content:center; }
+    .eyebrow-center::before { display:none; }
+
+    .btn {
+      display:inline-flex; align-items:center; gap:.7rem;
+      font-family:var(--body); font-size:.67rem; font-weight:600;
+      letter-spacing:.2em; text-transform:uppercase;
+      padding:.95rem 2.2rem; cursor:pointer; border:none;
+      transition:all .3s; white-space:nowrap;
+    }
+    .btn-navy   { background:var(--navy); color:#fff; }
+    .btn-navy:hover { background:var(--navy-deep); }
+    .btn-outline-navy { background:transparent; color:var(--navy); border:1.5px solid var(--navy); }
+    .btn-outline-navy:hover { background:var(--navy); color:#fff; }
+    .btn-outline-lt { background:transparent; color:rgba(255,255,255,.82); border:1.5px solid rgba(255,255,255,.25); }
+    .btn-outline-lt:hover { border-color:rgba(201,148,71,.65); color:var(--gold-lt); }
+    .btn-gold { background:var(--gold); color:#fff; }
+    .btn-gold:hover { background:var(--gold-dark); }
+
+    /* ── REVEAL ─────────────────────────────────────── */
+    .reveal       { opacity:0; transform:translateY(26px);  transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94); }
+    .reveal-left  { opacity:0; transform:translateX(-42px); transition:opacity .85s cubic-bezier(.25,.46,.45,.94),transform .85s cubic-bezier(.25,.46,.45,.94); }
+    .reveal-right { opacity:0; transform:translateX(42px);  transition:opacity .85s cubic-bezier(.25,.46,.45,.94),transform .85s cubic-bezier(.25,.46,.45,.94); }
+    .reveal.in, .reveal-left.in, .reveal-right.in { opacity:1; transform:none; }
+
+    /* ── HEADER ─────────────────────────────────────── */
+    header {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      display:flex; align-items:center; justify-content:center;
+      gap:3.5rem; padding:0 5%; height:91px;
+      background:rgba(247,245,240,.97);
+      box-shadow:0 1px 0 var(--rule);
+      backdrop-filter:blur(10px);
+    }
+    .h-logo { height:45px; flex-shrink:0; }
+    nav { display:flex; align-items:center; gap:3.1rem; }
+    nav a {
+      font-family:var(--body); font-size:.81rem; font-weight:500;
+      letter-spacing:.17em; text-transform:uppercase;
+      color:var(--mid); transition:color .2s; position:relative;
+    }
+    nav a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--gold); transition:width .25s; }
+    nav a:hover, nav a.cur { color:var(--navy); }
+    nav a:hover::after, nav a.cur::after { width:100%; }
+    .h-cta { flex-shrink:0; display:inline-flex; }
+
+    /* ── HAMBURGER ──────────────────────────────────── */
+    #hamburger {
+      display:none; position:fixed; top:0; right:5%;
+      height:91px; align-items:center; justify-content:center;
+      flex-direction:column; gap:5px;
+      cursor:pointer; z-index:10000; background:none; border:none; padding:4px;
+    }
+    #hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:all .3s; transform-origin:center; }
+    #hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    #hamburger.open span:nth-child(2) { opacity:0; }
+    #hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    #mobile-nav {
+      position:fixed; top:0; right:0; width:78%; max-width:300px; height:100vh;
+      background:var(--ivory); border-left:1px solid var(--rule); z-index:9998;
+      display:flex; flex-direction:column; justify-content:center;
+      align-items:center; padding:0 2.8rem; gap:2rem;
+      transform:translateX(100%); transition:transform .4s cubic-bezier(.77,0,.175,1);
+    }
+    #mobile-nav.open { transform:none; }
+    #mobile-nav::before {
+      content:''; position:absolute; left:0; top:18%; bottom:18%; width:2px;
+      background:linear-gradient(to bottom, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
+    }
+    .mobile-nav-logo { height:44px; margin-bottom:.6rem; }
+    .mobile-nav-rule { width:32px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin-bottom:.6rem; }
+    #mobile-nav a { font-family:var(--body); font-size:.78rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--mid); transition:color .2s; text-align:center; }
+    #mobile-nav a:hover { color:var(--navy); }
+    .nav-overlay { display:none; position:fixed; inset:0; background:rgba(27,49,80,.45); z-index:9997; }
+    .nav-overlay.open { display:block; }
+
+    /* ── PAGE HERO ──────────────────────────────────── */
+    #page-hero {
+      position:relative; overflow:hidden;
+      height:52vh; min-height:400px;
+      display:flex; align-items:center;
+      margin-top:91px;
+    }
+    .ph-bg {
+      position:absolute; inset:-20%;
+      background-image:url('https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=1920&q=95&fit=crop&auto=format');
+      background-size:cover; background-position:center 40%;
+      filter:grayscale(80%) brightness(.18) contrast(1.15);
+    }
+    .ph-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(105deg,
+        rgba(6,8,12,1) 0%,
+        rgba(10,15,22,.97) 30%,
+        rgba(14,22,35,.88) 55%,
+        rgba(14,22,35,.55) 80%,
+        rgba(14,22,35,.25) 100%
+      );
+    }
+    .ph-corner { position:absolute; width:48px; height:48px; z-index:3; }
+    .ph-corner-tl { top:24px; left:24px; border-top:1.5px solid rgba(201,148,71,.4); border-left:1.5px solid rgba(201,148,71,.4); }
+    .ph-corner-tr { top:24px; right:24px; border-top:1.5px solid rgba(201,148,71,.4); border-right:1.5px solid rgba(201,148,71,.4); }
+    .ph-corner-bl { bottom:24px; left:24px; border-bottom:1.5px solid rgba(201,148,71,.4); border-left:1.5px solid rgba(201,148,71,.4); }
+    .ph-corner-br { bottom:24px; right:24px; border-bottom:1.5px solid rgba(201,148,71,.4); border-right:1.5px solid rgba(201,148,71,.4); }
+    .ph-inner {
+      position:relative; z-index:2;
+      max-width:1100px; margin:0 auto; width:100%;
+      padding:0 5%; text-align:center;
+    }
+    .ph-eyebrow {
+      font-size:.58rem; font-weight:600; letter-spacing:.38em; text-transform:uppercase;
+      color:var(--gold); display:flex; align-items:center; justify-content:center;
+      gap:.7rem; margin-bottom:1.4rem;
+    }
+    .ph-eyebrow::before, .ph-eyebrow::after { content:''; display:inline-block; width:26px; height:1px; background:var(--gold); }
+    .ph-h1 {
+      font-family:var(--display); font-size:clamp(3rem,5.5vw,5.4rem);
+      font-weight:500; line-height:.95; color:#fff;
+    }
+    .ph-h1 em { font-style:italic; font-weight:300; color:rgba(255,255,255,.55); display:block; font-size:.65em; line-height:1.3; margin-top:.5rem; }
+    .ph-breadcrumb {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      z-index:3; display:flex; align-items:center; gap:.7rem;
+      font-size:.55rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
+      color:rgba(255,255,255,.3);
+    }
+    .ph-breadcrumb a { color:rgba(255,255,255,.3); transition:color .2s; }
+    .ph-breadcrumb a:hover { color:var(--gold); }
+    .ph-breadcrumb i { font-size:.45rem; color:rgba(201,148,71,.4); }
+
+    /* ── INTRO — claro centrado ─────────────────────── */
+    #intro {
+      padding:88px 5%; background:var(--ivory); position:relative; overflow:hidden;
+      text-align:center;
+    }
+    #intro::before {
+      content:''; position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(27,49,80,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,49,80,.08) 1px, transparent 1px);
+      background-size:44px 44px; pointer-events:none;
+    }
+    .intro-inner { max-width:760px; margin:0 auto; position:relative; z-index:1; }
+    .intro-inner .eyebrow { justify-content:center; margin-bottom:1.2rem; }
+    .intro-inner .eyebrow::before { display:none; }
+    .intro-h2 {
+      font-family:var(--display); font-size:clamp(2.2rem,4vw,3.8rem);
+      font-weight:500; line-height:.95; color:var(--navy); margin-bottom:1.6rem;
+    }
+    .intro-h2 em { font-style:italic; font-weight:300; color:var(--mid); display:block; font-size:.68em; line-height:1.35; margin-top:.5rem; }
+    .intro-rule { width:40px; height:1.5px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 1.8rem; }
+    .intro-p { font-size:.9rem; font-weight:300; line-height:2.05; color:var(--mid); margin-bottom:1rem; }
+    /* Tres badges de áreas */
+    .intro-badges {
+      display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-top:2.4rem;
+    }
+    .intro-badge {
+      display:flex; align-items:center; gap:.65rem;
+      padding:.7rem 1.4rem; border:1px solid var(--rule-gold);
+      background:rgba(201,148,71,.04);
+      font-size:.62rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--navy); transition:background .25s, border-color .25s;
+    }
+    .intro-badge:hover { background:rgba(201,148,71,.08); border-color:rgba(201,148,71,.5); }
+    .intro-badge i { font-size:.8rem; color:var(--gold); }
+
+    /* ── AREA SPLIT — shared styles ─────────────────── */
+    .area-section {
+      position:relative; overflow:hidden;
+    }
+    .area-split {
+      display:grid; grid-template-columns:1fr 1fr;
+      min-height:580px;
+    }
+    /* Imagen col */
+    .area-img-col { position:relative; overflow:hidden; }
+    .area-img {
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      filter:grayscale(100%);
+      transition:filter .6s ease, transform .7s ease;
+    }
+    .area-img-col:hover .area-img { filter:grayscale(20%); transform:scale(1.04); }
+
+    /* Content col */
+    .area-content {
+      display:flex; flex-direction:column; justify-content:center;
+      padding:80px 64px;
+    }
+    .area-content .eyebrow { margin-bottom:1.2rem; }
+    .area-h2 {
+      font-family:var(--display); font-size:clamp(2.2rem,3.5vw,3.6rem);
+      font-weight:500; line-height:.95; margin-bottom:1.4rem;
+    }
+    .area-rule { width:38px; height:1.5px; margin-bottom:1.6rem; }
+    .area-p { font-size:.88rem; font-weight:300; line-height:2; margin-bottom:1.6rem; }
+    .area-items { display:flex; flex-direction:column; gap:.9rem; margin-bottom:2.2rem; }
+    .area-item { display:flex; align-items:flex-start; gap:.85rem; }
+    .area-item i { font-size:.7rem; margin-top:.2rem; flex-shrink:0; }
+    .area-item span { font-size:.85rem; font-weight:300; line-height:1.7; }
+    .area-content .btn { align-self:flex-start; width:auto; }
+    .area-num {
+      position:absolute; font-family:var(--display); font-size:8rem; font-weight:600;
+      line-height:1; pointer-events:none; z-index:0;
+    }
+
+    /* ── EMPRESA — dark navy ─────────────────────────── */
+    #empresa { background:var(--navy); }
+    #empresa .area-bg {
+      position:absolute; inset:0;
+      background-image:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1920&q=95&fit=crop&auto=format');
+      background-size:cover; background-position:center;
+      filter:grayscale(100%) brightness(.10) contrast(1.1);
+    }
+    #empresa .area-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(160deg, rgba(8,12,18,.88) 0%, rgba(14,22,35,.80) 100%);
+    }
+    #empresa .area-split { position:relative; z-index:2; }
+    #empresa .area-content { background:transparent; }
+    #empresa .eyebrow { color:var(--gold); }
+    #empresa .eyebrow::before { background:var(--gold); }
+    #empresa .area-h2 { color:#fff; }
+    #empresa .area-rule { background:linear-gradient(90deg,var(--gold),var(--gold-lt)); }
+    #empresa .area-p { color:rgba(255,255,255,.55); }
+    #empresa .area-item i { color:var(--gold); }
+    #empresa .area-item span { color:rgba(255,255,255,.65); }
+    #empresa .area-num { color:rgba(255,255,255,.04); bottom:-20px; right:40px; }
+    /* Línea gold arriba */
+    #empresa .area-content::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg, var(--gold), transparent);
+    }
+    #empresa .area-content { position:relative; }
+
+    /* ── FAMILIA — claro bg-warm ─────────────────────── */
+    #familia { background:var(--bg-warm); }
+    #familia::before {
+      content:''; position:absolute; inset:0;
+      background-image:radial-gradient(circle, rgba(27,49,80,.1) 1.5px, transparent 1.5px);
+      background-size:28px 28px; pointer-events:none;
+    }
+    #familia .area-split { position:relative; z-index:1; }
+    /* Imagen a la derecha */
+    #familia .area-split { grid-template-columns:1fr 1fr; }
+    #familia .area-content { padding:80px 64px; text-align:right; }
+    #familia .eyebrow { justify-content:flex-end; }
+    #familia .eyebrow::before { display:none; }
+    #familia .eyebrow::after { content:''; display:inline-block; width:26px; height:1px; background:var(--gold); }
+    #familia .area-rule { margin-left:auto; }
+    #familia .area-items { align-items:flex-end; }
+    #familia .area-item { flex-direction:row-reverse; }
+    #familia .area-item i { margin-top:.2rem; }
+    #familia .area-content .btn { align-self:flex-end; }
+    #familia .eyebrow { color:var(--gold); }
+    #familia .area-h2 { color:var(--navy); }
+    #familia .area-rule { background:linear-gradient(90deg,var(--gold),var(--gold-lt)); }
+    #familia .area-p { color:var(--mid); }
+    #familia .area-item i { color:var(--gold); }
+    #familia .area-item span { color:var(--mid); }
+    #familia .area-num { color:rgba(27,49,80,.05); bottom:-20px; left:20px; }
+    /* Gold corner on image */
+    #familia .area-img-col::before {
+      content:''; position:absolute; top:32px; right:32px; width:52px; height:52px;
+      border-top:2px solid var(--gold); border-right:2px solid var(--gold); z-index:3;
+    }
+    #familia .area-img-col::after {
+      content:''; position:absolute; bottom:32px; left:32px; width:52px; height:52px;
+      border-bottom:2px solid var(--gold); border-left:2px solid var(--gold); z-index:3;
+    }
+
+    /* ── SUCESIONES — dark #0f1c2e ──────────────────── */
+    #sucesiones { background:#0f1c2e; }
+    #sucesiones::before {
+      content:''; position:absolute; inset:0;
+      background-image:
+        radial-gradient(ellipse at 80% 50%, rgba(35,64,112,.5) 0%, transparent 55%),
+        linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+      background-size:auto, 44px 44px, 44px 44px;
+      pointer-events:none;
+    }
+    #sucesiones .area-split { position:relative; z-index:1; }
+    #sucesiones .area-content { padding:80px 64px; }
+    #sucesiones .eyebrow { color:var(--gold); }
+    #sucesiones .eyebrow::before { background:var(--gold); }
+    #sucesiones .area-h2 { color:#fff; }
+    #sucesiones .area-rule { background:linear-gradient(90deg,var(--gold),var(--gold-lt)); }
+    #sucesiones .area-p { color:rgba(255,255,255,.55); }
+    #sucesiones .area-item i { color:var(--gold); }
+    #sucesiones .area-item span { color:rgba(255,255,255,.65); }
+    #sucesiones .area-num { color:rgba(255,255,255,.03); bottom:-20px; right:40px; }
+
+    /* ── INTERSECCION — claro ivory ─────────────────── */
+    #interseccion {
+      padding:110px 5%; background:var(--bg); position:relative; overflow:hidden;
+    }
+    #interseccion::before {
+      content:''; position:absolute; inset:0;
+      background-image:radial-gradient(circle, rgba(27,49,80,.1) 1.5px, transparent 1.5px);
+      background-size:30px 30px; pointer-events:none;
+    }
+    .interseccion-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
+    .interseccion-head { text-align:center; margin-bottom:4rem; }
+    .interseccion-head .eyebrow { justify-content:center; }
+    .interseccion-head .eyebrow::before { display:none; }
+    .interseccion-h2 {
+      font-family:var(--display); font-size:clamp(2rem,3.8vw,3.5rem);
+      font-weight:500; line-height:.97; color:var(--navy); margin-top:1rem;
+    }
+    .interseccion-h2 em { font-style:italic; font-weight:300; color:var(--mid); font-size:.7em; display:block; line-height:1.35; }
+    /* Grid de 3 */
+    .interseccion-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:0; background:var(--rule);
+    }
+    .interseccion-card {
+      background:var(--bg); padding:48px 36px;
+      display:flex; flex-direction:column; gap:1rem;
+      position:relative; overflow:hidden;
+      transition:background .25s;
+    }
+    .interseccion-card:hover { background:var(--bg-warm); }
+    .interseccion-card::after {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity:0; transition:opacity .35s;
+    }
+    .interseccion-card:hover::after { opacity:1; }
+    .int-ico { width:44px; height:44px; border:1px solid var(--rule-gold); display:flex; align-items:center; justify-content:center; }
+    .int-ico i { font-size:.85rem; color:var(--gold); }
+    .int-h3 { font-family:var(--display); font-size:1.5rem; font-weight:500; color:var(--navy); line-height:1.15; }
+    .int-rule { width:26px; height:1px; background:linear-gradient(90deg,var(--gold),transparent); }
+    .int-p { font-size:.84rem; font-weight:300; color:var(--soft); line-height:1.9; }
+
+    /* ── CTA FINAL ──────────────────────────────────── */
+    #cta-final {
+      padding:96px 5%; background:var(--navy);
+      position:relative; overflow:hidden; text-align:center;
+    }
+    .cta-bg {
+      position:absolute; inset:0;
+      background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=95&fit=crop&auto=format');
+      background-size:cover; background-position:center;
+      filter:grayscale(100%) brightness(.12) contrast(1.1);
+    }
+    .cta-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(160deg, rgba(8,12,18,.9) 0%, rgba(14,22,35,.82) 100%);
+    }
+    .cta-inner { max-width:680px; margin:0 auto; position:relative; z-index:2; }
+    .cta-eyebrow { justify-content:center; margin-bottom:1.2rem; color:var(--gold); }
+    .cta-eyebrow::before { display:none; }
+    .cta-h2 {
+      font-family:var(--display); font-size:clamp(2rem,4vw,3.6rem);
+      font-weight:500; line-height:.97; color:#fff; margin-bottom:1.3rem;
+    }
+    .cta-h2 em { font-style:italic; font-weight:300; color:rgba(255,255,255,.45); display:block; font-size:.7em; line-height:1.35; margin-top:.4rem; }
+    .cta-rule { width:40px; height:1.5px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 1.7rem; }
+    .cta-p { font-size:.9rem; font-weight:300; line-height:2; color:rgba(255,255,255,.5); margin-bottom:2.6rem; }
+    .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer { background:#070e18; padding:72px 5% 24px; border-top:1px solid rgba(255,255,255,.05); }
+    .f-inner { max-width:1100px; margin:0 auto; }
+    .f-main { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:48px; padding-bottom:56px; margin-bottom:28px; border-bottom:1px solid rgba(255,255,255,.08); }
+    .f-logo { height:44px; margin-bottom:1rem; }
+    .f-brand-desc { font-size:.77rem; font-weight:300; color:rgba(255,255,255,.42); line-height:1.9; max-width:220px; }
+    .f-col-title { font-size:.56rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:1.4rem; display:block; }
+    .f-col-links { display:flex; flex-direction:column; gap:.8rem; }
+    .f-col-links a { font-size:.75rem; font-weight:300; color:rgba(255,255,255,.46); transition:color .2s; }
+    .f-col-links a:hover { color:rgba(255,255,255,.9); }
+    .f-contact-items { display:flex; flex-direction:column; gap:.95rem; }
+    .f-contact-item { display:flex; align-items:flex-start; gap:.72rem; }
+    .f-contact-item i { font-size:.64rem; color:var(--gold); margin-top:.2rem; flex-shrink:0; }
+    .f-contact-item span { font-size:.75rem; font-weight:300; color:rgba(255,255,255,.46); line-height:1.6; }
+    .f-bot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:.4rem; }
+    .f-bot p { font-size:.58rem; color:rgba(255,255,255,.24); }
+    .f-bot a { color:rgba(255,255,255,.4); transition:color .2s; }
+    .f-bot a:hover { color:var(--gold-lt); }
+
+    /* ── WA + BACK TO TOP ───────────────────────────── */
+    .wa { position:fixed; bottom:24px; right:24px; z-index:888; width:50px; height:50px; background:#25D366; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.25rem; border-radius:50%; box-shadow:0 4px 20px rgba(37,211,102,.32); transition:opacity .3s,visibility .3s,transform .25s; opacity:0; visibility:hidden; pointer-events:none; }
+    .wa.visible { opacity:1; visibility:visible; pointer-events:auto; }
+    .wa:hover { transform:scale(1.1); }
+    .back-top { position:fixed; bottom:84px; right:24px; z-index:888; width:50px; height:50px; background:var(--navy); border:1px solid rgba(201,148,71,.35); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.8); font-size:.85rem; border-radius:50%; box-shadow:0 4px 16px rgba(27,49,80,.3); cursor:pointer; opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity .3s,visibility .3s,transform .3s,background .25s; }
+    .back-top.visible { opacity:1; visibility:visible; transform:translateY(0); }
+    .back-top:hover { background:var(--navy-lt); transform:translateY(-2px); }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .area-content { padding:64px 40px; }
+      #familia .area-content { padding:64px 40px; }
+      .interseccion-grid { grid-template-columns:1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      header { justify-content:center; gap:0; }
+      nav { display:none; }
+      .h-cta { display:none !important; }
+      #hamburger { display:flex; }
+
+      #page-hero { height:auto; min-height:320px; padding:40px 0 60px; }
+      .ph-corner { display:none; }
+      .ph-h1 { font-size:clamp(2.4rem,9vw,3.2rem); }
+      .ph-breadcrumb { display:none; }
+
+      /* Intro */
+      .intro-badges { flex-direction:column; align-items:center; }
+      .intro-badge { width:100%; max-width:280px; justify-content:center; }
+
+      /* Area splits stack */
+      .area-split { grid-template-columns:1fr; min-height:auto; }
+      .area-img-col { aspect-ratio:16/9; position:relative; min-height:0; }
+      .area-img { position:absolute; inset:0; }
+      .area-content { padding:56px 5%; text-align:center; }
+      #familia .area-split { display:flex; flex-direction:column; }
+      #familia .area-img-col { width:100%; aspect-ratio:16/9; position:relative; min-height:0; flex-shrink:0; }
+      #familia .area-content { width:100%; }
+      #familia .area-content { order:2; }   /* contenido abajo */
+      #familia .area-img-col { order:1; }   /* imagen arriba */
+      #familia .eyebrow { justify-content:center; }
+      #familia .eyebrow::before { display:inline-block; }
+      #familia .eyebrow::after { display:none; }
+      #familia .area-rule { margin:0 auto 1.6rem; }
+      #familia .area-items { align-items:center; }
+      #familia .area-item { flex-direction:row; max-width:340px; margin:0 auto; }
+      #familia .area-content .btn { align-self:center; }
+      .area-content .eyebrow { justify-content:center; }
+      .area-content .eyebrow::before { display:none; }
+      .area-rule { margin:0 auto 1.6rem; }
+      .area-h2 { text-align:center; }
+      .area-p { text-align:center; }
+      .area-items { max-width:340px; margin:0 auto 2.2rem; }
+      .area-content .btn { align-self:center; }
+      #familia .area-img-col::before, #familia .area-img-col::after { display:none; }
+      .area-num { display:none; }
+
+      /* Interseccion */
+      .interseccion-grid { grid-template-columns:1fr; }
+      .interseccion-card { text-align:center; align-items:center; }
+      .int-rule { margin:0 auto; }
+      .interseccion-head .eyebrow { justify-content:center; }
+
+      /* CTA */
+      .cta-btns { flex-direction:column; align-items:center; }
+      .cta-btns .btn { width:100%; max-width:300px; justify-content:center; }
+
+      /* Footer */
+      .f-main { grid-template-columns:1fr; text-align:center; gap:40px; }
+      .f-brand { display:flex; flex-direction:column; align-items:center; }
+      .f-brand-desc { max-width:none; }
+      .f-col { display:flex; flex-direction:column; align-items:center; }
+      .f-contact-item { justify-content:center; }
+      .f-bot { flex-direction:column; align-items:center; text-align:center; }
+
+      #intro, #interseccion, #cta-final { padding:80px 5%; }
+    }
+
+    @media (max-width: 480px) {
+      .ph-h1 { font-size:clamp(2rem,9vw,2.6rem); }
+    }
+  </style>
+</head>
+<body>
+
+<header id="hdr">
+  <img src="./logo-te.png" alt="Tucci & Esquivel" class="h-logo"/>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">El Estudio</a>
+    <a href="areas.html" class="cur">Áreas</a>
+    <a href="equipo.html">Equipo</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <a href="https://wa.me/5491164913803" target="_blank" class="btn btn-gold h-cta" style="padding:.62rem 1.4rem;font-size:.6rem">
+    <i class="fa-brands fa-whatsapp"></i> Consultar
+  </a>
+</header>
+<button id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav id="mobile-nav">
+  <img src="./logo-te.png" alt="Tucci & Esquivel" class="mobile-nav-logo"/>
+  <div class="mobile-nav-rule"></div>
+  <a href="index.html">Inicio</a>
+  <a href="nosotros.html">El Estudio</a>
+  <a href="areas.html">Áreas</a>
+  <a href="equipo.html">Equipo</a>
+  <a href="contacto.html">Contacto</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section id="page-hero">
+  <div class="ph-bg"></div>
+  <div class="ph-overlay"></div>
+  <div class="ph-corner ph-corner-tl"></div>
+  <div class="ph-corner ph-corner-tr"></div>
+  <div class="ph-corner ph-corner-bl"></div>
+  <div class="ph-corner ph-corner-br"></div>
+  <div class="ph-inner">
+    <div class="ph-eyebrow">Especialización jurídica</div>
+    <h1 class="ph-h1">
+      Áreas de práctica
+      <em>empresa, familia y sucesiones</em>
+    </h1>
+  </div>
+  <div class="ph-breadcrumb">
+    <a href="index.html">Inicio</a>
+    <i class="fa-solid fa-chevron-right"></i>
+    <span>Áreas</span>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-inner reveal">
+    <span class="eyebrow eyebrow-center">Las tres áreas</span>
+    <h2 class="intro-h2">
+      Donde lo jurídico, patrimonial<br/>y familiar confluyen
+      <em>una mirada integral para cada situación</em>
+    </h2>
+    <div class="intro-rule"></div>
+    <p class="intro-p">La práctica del estudio se desarrolla en tres áreas que con frecuencia se entrecruzan. En muchos de los casos que abordamos, una decisión empresarial tiene impacto familiar, o una cuestión sucesoria involucra a la vez vínculos personales y estructuras patrimoniales que requieren ser analizadas desde distintos ángulos.</p>
+    <p class="intro-p">Esta intersección es, precisamente, donde la complementariedad entre las socias aporta mayor valor: la capacidad de leer cada situación desde múltiples perspectivas jurídicas al mismo tiempo.</p>
+    <div class="intro-badges">
+      <div class="intro-badge"><i class="fa-solid fa-building"></i> Derecho de Empresa</div>
+      <div class="intro-badge"><i class="fa-solid fa-people-roof"></i> Derecho de Familia</div>
+      <div class="intro-badge"><i class="fa-solid fa-landmark"></i> Sucesiones y Patrimonio</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPRESA -->
+<section id="empresa" class="area-section">
+  <div class="area-bg"></div>
+  <div class="area-overlay"></div>
+  <div class="area-split">
+    <div class="area-img-col reveal-left">
+      <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=900&q=95&fit=crop&auto=format"
+           alt="Derecho de Empresa" class="area-img" loading="lazy"/>
+    </div>
+    <div class="area-content reveal-right" style="transition-delay:.1s">
+      <span class="area-num">01</span>
+      <span class="eyebrow">Área de práctica</span>
+      <h2 class="area-h2">Derecho<br/>de Empresa</h2>
+      <div class="area-rule"></div>
+      <p class="area-p">Asesoramos a empresarios, socios y organizaciones en cuestiones jurídicas vinculadas con la actividad empresarial. Intervenimos en conflictos entre socios, negociación de acuerdos societarios, reorganización de estructuras empresariales y análisis jurídico de decisiones estratégicas.</p>
+      <div class="area-items">
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Conflictos entre socios y resolución de disputas societarias</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Negociación y redacción de acuerdos societarios</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Reorganización de estructuras empresariales</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Análisis jurídico de decisiones estratégicas</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Empresa familiar: conflictos y continuidad del proyecto</span></div>
+      </div>
+      <a href="contacto.html" class="btn btn-gold">Consultar sobre esta área <i class="fa-solid fa-arrow-right" style="font-size:.52rem"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILIA -->
+<section id="familia" class="area-section">
+  <div class="area-split">
+    <div class="area-content reveal-left" style="transition-delay:.1s">
+      <span class="area-num">02</span>
+      <span class="eyebrow">Área de práctica</span>
+      <h2 class="area-h2">Derecho<br/>de Familia</h2>
+      <div class="area-rule"></div>
+      <p class="area-p">Acompañamos a personas y familias en situaciones jurídicas que involucran relaciones familiares y decisiones de alto impacto personal y patrimonial. Procuramos abordarlas con rigor jurídico, estrategia y sensibilidad frente a las dinámicas familiares involucradas.</p>
+      <div class="area-items">
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Divorcios y disolución del régimen patrimonial</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Acuerdos de parentalidad y cuidado de hijos</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Alimentos y cuota alimentaria</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Conflictos familiares de alta complejidad</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Mediación y negociación en contextos sensibles</span></div>
+      </div>
+      <a href="contacto.html" class="btn btn-outline-navy">Consultar sobre esta área <i class="fa-solid fa-arrow-right" style="font-size:.52rem"></i></a>
+    </div>
+    <div class="area-img-col reveal-right">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=95&fit=crop&auto=format"
+           alt="Derecho de Familia" class="area-img" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- SUCESIONES -->
+<section id="sucesiones" class="area-section">
+  <div class="area-split">
+    <div class="area-img-col reveal-left">
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=95&fit=crop&auto=format"
+           alt="Sucesiones y Patrimonio" class="area-img" loading="lazy"/>
+    </div>
+    <div class="area-content reveal-right" style="transition-delay:.1s">
+      <span class="area-num">03</span>
+      <span class="eyebrow">Área de práctica</span>
+      <h2 class="area-h2">Sucesiones y<br/>Patrimonio</h2>
+      <div class="area-rule"></div>
+      <p class="area-p">Asesoramos a familias en la organización y transmisión del patrimonio, así como en la tramitación de procesos sucesorios. Intervenimos tanto en la gestión judicial de sucesiones como en conflictos entre herederos, buscando siempre acuerdos que permitan ordenar las relaciones patrimoniales de manera clara y sostenible.</p>
+      <div class="area-items">
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Tramitación judicial de sucesiones</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Conflictos entre herederos y administración de bienes</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Organización y planificación patrimonial</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Transmisión de bienes registrables</span></div>
+        <div class="area-item"><i class="fa-solid fa-check"></i><span>Acuerdos hereditarios y partición extrajudicial</span></div>
+      </div>
+      <a href="contacto.html" class="btn btn-gold">Consultar sobre esta área <i class="fa-solid fa-arrow-right" style="font-size:.52rem"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- INTERSECCION -->
+<section id="interseccion">
+  <div class="interseccion-inner">
+    <div class="interseccion-head reveal">
+      <span class="eyebrow eyebrow-center">La intersección</span>
+      <h2 class="interseccion-h2">
+        Cuando las áreas se cruzan
+        <em>la mirada integral que distingue al estudio</em>
+      </h2>
+    </div>
+    <div class="interseccion-grid">
+      <div class="interseccion-card reveal" style="transition-delay:0s">
+        <div class="int-ico"><i class="fa-solid fa-building-user"></i></div>
+        <h3 class="int-h3">Empresa y Familia</h3>
+        <div class="int-rule"></div>
+        <p class="int-p">Los conflictos en empresas familiares suelen involucrar al mismo tiempo vínculos societarios y relaciones personales. Abordamos ambas dimensiones de manera integrada, buscando soluciones que ordenen el negocio sin destruir los lazos familiares.</p>
+      </div>
+      <div class="interseccion-card reveal" style="transition-delay:.1s">
+        <div class="int-ico"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3 class="int-h3">Familia y Sucesiones</h3>
+        <div class="int-rule"></div>
+        <p class="int-p">Los procesos sucesorios frecuentemente reactivan o agudizan conflictos familiares preexistentes. Nuestra intervención combina el rigor técnico de la tramitación sucesoria con la gestión del factor humano y relacional que los atraviesa.</p>
+      </div>
+      <div class="interseccion-card reveal" style="transition-delay:.2s">
+        <div class="int-ico"><i class="fa-solid fa-arrows-to-circle"></i></div>
+        <h3 class="int-h3">Las tres en conjunto</h3>
+        <div class="int-rule"></div>
+        <p class="int-p">En muchos casos, una decisión empresarial tiene efectos patrimoniales sobre la familia, que a su vez condicionan la planificación sucesoria. Este tipo de situaciones es donde la complementariedad entre las socias genera mayor valor para el cliente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-inner reveal">
+    <span class="eyebrow eyebrow-center cta-eyebrow">Comenzar</span>
+    <h2 class="cta-h2">
+      ¿Tu situación involucra<br/>alguna de estas áreas?
+      <em>consultanos, te orientamos sin compromiso</em>
+    </h2>
+    <div class="cta-rule"></div>
+    <p class="cta-p">El primer paso es contarnos tu situación. Una de las socias evaluará en qué área o combinación de áreas encuadra tu caso y te indicará los pasos a seguir.</p>
+    <div class="cta-btns">
+      <a href="contacto.html" class="btn btn-gold">Ir a contacto <i class="fa-solid fa-arrow-right" style="font-size:.52rem"></i></a>
+      <a href="https://wa.me/5491164913803" target="_blank" class="btn btn-outline-lt">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-inner">
+    <div class="f-main">
+      <div class="f-brand">
+        <img src="./logo-te-f.png" alt="Tucci & Esquivel" class="f-logo"/>
+        <p class="f-brand-desc">Estudio jurídico especializado en Empresa, Familia y Sucesiones. Vicente López, Buenos Aires, Argentina.</p>
+      </div>
+      <div class="f-col">
+        <span class="f-col-title">Navegación</span>
+        <div class="f-col-links">
+          <a href="index.html">Inicio</a>
+          <a href="nosotros.html">El Estudio</a>
+          <a href="areas.html">Áreas</a>
+          <a href="equipo.html">Equipo</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <span class="f-col-title">Áreas</span>
+        <div class="f-col-links">
+          <a href="#empresa">Derecho de Empresa</a>
+          <a href="#familia">Derecho de Familia</a>
+          <a href="#sucesiones">Sucesiones y Patrimonio</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <span class="f-col-title">Contacto</span>
+        <div class="f-contact-items">
+          <div class="f-contact-item"><i class="fa-solid fa-phone"></i><span>+54 9 11 6491-3803</span></div>
+          <div class="f-contact-item"><i class="fa-solid fa-phone"></i><span>+54 9 11 6644-5720</span></div>
+          <div class="f-contact-item"><i class="fa-brands fa-instagram"></i><span>@tucciesquivel.estudio</span></div>
+          <div class="f-contact-item"><i class="fa-solid fa-location-dot"></i><span>Ávalos 2869<br/>Vicente López, Bs. As.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="f-bot">
+      <p>© 2026 Tucci & Esquivel Estudio Jurídico. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://www.instagram.com/sageedev/" target="_blank">@sageeDev</a></p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5491164913803" target="_blank" class="wa" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<button class="back-top" id="backTop" aria-label="Volver arriba">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script>
+  const backTop = document.getElementById('backTop');
+  const waBtn   = document.querySelector('.wa');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+    waBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  backTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  const hbg  = document.getElementById('hamburger');
+  const mnav = document.getElementById('mobile-nav');
+  const ovl  = document.getElementById('nav-overlay');
+  function toggleNav() {
+    const open = !mnav.classList.contains('open');
+    hbg.classList.toggle('open', open);
+    mnav.classList.toggle('open', open);
+    ovl.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  hbg.addEventListener('click', toggleNav);
+  ovl.addEventListener('click', toggleNav);
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 91, behavior:'smooth' });
+    });
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.10 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
