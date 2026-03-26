@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-  <title>El Equipo — Tucci & Esquivel | Estudio Jurídico | Vicente López</title>
-  <meta name="description" content="Dra. Noelia Tucci y Dra. Alejandra Gómez Esquivel. Socias fundadoras del Estudio Jurídico Tucci & Esquivel. Más de 20 años de experiencia en derecho."/>
+  <title>El Equipo — TUCCI | ESQUIVEL | CABA y Provincia de Buenos Aires</title>
+  <meta name="description" content="Equipo de TUCCI | ESQUIVEL Estudio Jurídico. Noelia Tucci, Alejandra Gómez Esquivel, Lilian Azzati y Mayra Pérez. CABA y Provincia de Buenos Aires."/>
   <link rel="icon" href="./logo-te.png" type="image/png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -122,7 +122,7 @@
     .socia-img-col { position:relative; overflow:hidden; }
     .socia-img {
       position:absolute; inset:0; width:100%; height:100%;
-      object-fit:cover; object-position: 0px -220px;
+      object-fit:cover; object-position:center top;
       filter:grayscale(100%);
       transition:filter .6s ease, transform .7s ease;
     }
@@ -182,6 +182,45 @@
     #esquivel .socia-img-col::before { content:''; position:absolute; top:32px; left:32px; width:52px; height:52px; border-top:2px solid var(--gold); border-left:2px solid var(--gold); z-index:3; }
     #esquivel .socia-img-col::after { content:''; position:absolute; bottom:32px; right:32px; width:52px; height:52px; border-bottom:2px solid var(--gold); border-right:2px solid var(--gold); z-index:3; }
 
+
+    /* ── NUEVOS INTEGRANTES ─────────────────────────── */
+    #equipo-apoyo-ext {
+      padding:80px 5%; background:var(--ivory); position:relative; overflow:hidden;
+    }
+    #equipo-apoyo-ext::before {
+      content:''; position:absolute; inset:0;
+      background-image: linear-gradient(rgba(27,49,80,.08) 1px, transparent 1px), linear-gradient(90deg,rgba(27,49,80,.08) 1px,transparent 1px);
+      background-size:44px 44px; pointer-events:none;
+    }
+    .equipo-ext-inner { max-width:1100px; margin:0 auto; position:relative; z-index:1; }
+    .equipo-ext-head { text-align:center; margin-bottom:3rem; }
+    .equipo-ext-head .eyebrow { justify-content:center; }
+    .equipo-ext-head .eyebrow::before { display:none; }
+    .equipo-ext-h2 { font-family:var(--display); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:500; line-height:.97; color:var(--navy); margin-top:.8rem; }
+    .equipo-ext-h2 em { font-style:italic; font-weight:300; color:var(--mid); font-size:.7em; display:block; line-height:1.35; }
+    .equipo-ext-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; background:var(--rule); }
+    .miembro-card {
+      background:var(--ivory); padding:40px 36px;
+      display:flex; flex-direction:column; gap:.9rem;
+      position:relative; overflow:hidden;
+      transition:background .25s;
+    }
+    .miembro-card:hover { background:var(--bg-warm); }
+    .miembro-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .35s; }
+    .miembro-card:hover::after { opacity:1; }
+    .miembro-ico { width:40px; height:40px; border:1px solid var(--rule-gold); display:flex; align-items:center; justify-content:center; }
+    .miembro-ico i { font-size:.78rem; color:var(--gold); }
+    .miembro-img-wrap { width:200px; height:200px; border-radius:50%; overflow:hidden; border:2px solid var(--rule-gold); flex-shrink:0; align-self:flex-start; }
+    .miembro-img { width:100%; height:100%; object-fit:cover; object-position:center top; filter:grayscale(100%); transition:filter .5s ease; }
+    .miembro-card:hover .miembro-img { filter:grayscale(0%); }
+    .miembro-header { display:flex; align-items:center; gap:1.2rem; }
+    .miembro-name { font-family:var(--display); font-size:1.55rem; font-weight:500; color:var(--navy); line-height:1.05; }
+    .miembro-title { font-size:.6rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); }
+    .miembro-rule { width:24px; height:1px; background:linear-gradient(90deg,var(--gold),transparent); }
+    .miembro-p { font-size:.84rem; font-weight:300; color:var(--soft); line-height:1.9; }
+    .miembro-tel { display:inline-flex; align-items:center; gap:.6rem; font-size:.76rem; font-weight:400; color:var(--mid); margin-top:.2rem; transition:color .2s; }
+    .miembro-tel:hover { color:var(--gold-dark); }
+    .miembro-tel i { font-size:.7rem; color:var(--gold); }
     /* ── COMPLEMENTARIEDAD — dark #0f1c2e ───────────── */
     #complemento {
       padding:110px 5%; background:#0f1c2e; position:relative; overflow:hidden;
@@ -279,7 +318,7 @@
       /* Socia splits */
       .socia-split { grid-template-columns:1fr; min-height:auto; }
       .socia-img-col { aspect-ratio:4/3; position:relative; min-height:0; }
-      .socia-img { position:absolute; inset:0; object-position: center -80px;}
+      .socia-img { position:absolute; inset:0; }
       .socia-content { padding:56px 5%; text-align:center; order:2 !important; }
       .socia-img-col { order:1 !important; }
       .socia-eyebrow { justify-content:center; }
@@ -310,7 +349,11 @@
       .f-contact-item { justify-content:center; }
       .f-bot { flex-direction:column; align-items:center; text-align:center; }
 
-      #intro, #complemento, #cta-final { padding:80px 5%; }
+      .equipo-ext-grid { grid-template-columns:1fr; }
+      .miembro-card { text-align:center; align-items:center; }
+      .miembro-header { flex-direction:column; align-items:center; text-align:center; }
+      .miembro-rule { margin:0 auto; }
+      #intro, #complemento, #cta-final, #equipo-apoyo-ext { padding:80px 5%; }
     }
 
     @media (max-width: 480px) {
@@ -321,7 +364,7 @@
 <body>
 
 <header id="hdr">
-  <img src="./logo-te.png" alt="Tucci & Esquivel" class="h-logo"/>
+  <img src="./logo-te.png" alt="Tucci | Esquivel" class="h-logo"/>
   <nav>
     <a href="index.html">Inicio</a>
     <a href="nosotros.html">El Estudio</a>
@@ -336,7 +379,7 @@
 <button id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
 <div class="nav-overlay" id="nav-overlay"></div>
 <nav id="mobile-nav">
-  <img src="./logo-te.png" alt="Tucci & Esquivel" class="mobile-nav-logo"/>
+  <img src="./logo-te.png" alt="Tucci | Esquivel" class="mobile-nav-logo"/>
   <div class="mobile-nav-rule"></div>
   <a href="index.html">Inicio</a>
   <a href="nosotros.html">El Estudio</a>
@@ -372,12 +415,12 @@
   <div class="intro-inner reveal">
     <span class="eyebrow eyebrow-center">El estudio</span>
     <h2 class="intro-h2">
-      Conducido directamente<br/>por sus socias fundadoras
-      <em>sin intermediarios, con criterio propio en cada caso</em>
+      El conflicto no es solo jurídico
+      <em>por eso trabajamos de manera interdisciplinaria</em>
     </h2>
     <div class="intro-rule"></div>
-    <p class="intro-p">El Estudio Jurídico Tucci – Esquivel es conducido directamente por la Dra. Noelia Tucci y la Dra. Alejandra Gómez Esquivel. Cada caso es seguido, analizado y resuelto por una de las socias —o por ambas cuando la naturaleza del asunto lo requiere— garantizando continuidad, criterio y calidad en cada etapa del proceso.</p>
-    <p class="intro-p">Esta decisión no es accidental: la atención directa de las socias fundadoras es parte central de la propuesta de valor del estudio.</p>
+    <p class="intro-p">El conflicto no es solo jurídico. Por eso trabajamos de manera interdisciplinaria, integrando distintas miradas para comprenderlo y abordarlo en toda su complejidad.</p>
+    <p class="intro-p">Diseñamos estrategias legales para conflictos familiares, empresariales y patrimoniales, integrando una mirada interdisciplinaria para construir soluciones posibles y sostenibles.</p>
   </div>
 </section>
 
@@ -387,7 +430,7 @@
   <div class="tucci-overlay"></div>
   <div class="socia-split">
     <div class="socia-img-col reveal-left">
-      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=95&fit=crop&auto=format"
+      <img src="./NOE TUCCI.jpeg"
            alt="Dra. Noelia Tucci" class="socia-img" loading="lazy"/>
     </div>
     <div class="socia-content reveal-right" style="transition-delay:.1s">
@@ -395,8 +438,8 @@
       <div class="socia-name">Noelia Tucci</div>
       <div class="socia-title">Abogada · Escribana</div>
       <div class="socia-rule"></div>
-      <p class="socia-p">La Dra. Noelia Tucci ejerce el derecho desde una perspectiva técnica, rigurosa y preventiva. Su doble formación como <strong>abogada y escribana</strong> le otorga al estudio una capacidad única para abordar los aspectos documentales, registrales y patrimoniales con la misma profundidad que los estrictamente procesales.</p>
-      <p class="socia-p">Trabaja desde una mirada estratégica orientada a brindar claridad y seguridad jurídica en la toma de decisiones, especialmente en contextos donde se articulan vínculos familiares y estructuras patrimoniales complejas. Su enfoque preventivo permite anticipar conflictos y diseñar soluciones que ordenen el presente y otorguen previsibilidad a largo plazo.</p>
+      <p class="socia-p">Especializada en derecho sucesorio, patrimonial y en la estructuración jurídica de procesos vinculados a la organización y transmisión de bienes. Cuenta con más de 20 años de experiencia en el ejercicio profesional, aportando un enfoque técnico, riguroso y preciso en el análisis y diseño de soluciones jurídicas.</p>
+      <p class="socia-p">Su práctica se orienta a brindar claridad y seguridad en la toma de decisiones, especialmente en contextos donde se articulan vínculos familiares y estructuras patrimoniales.</p>
       <div class="socia-tags">
         <span class="socia-tag">Sucesiones</span>
         <span class="socia-tag">Patrimonio</span>
@@ -416,8 +459,8 @@
       <div class="socia-name">Alejandra G. Esquivel</div>
       <div class="socia-title">Abogada · Conferencista · Autora</div>
       <div class="socia-rule"></div>
-      <p class="socia-p">La Dra. Alejandra Gómez Esquivel es abogada egresada en 2005, con más de 20 años de experiencia. Especializada en <strong>Derecho de Familia</strong> y en el diseño estratégico de soluciones en contextos de conflicto complejo, su práctica se enfoca en la intersección entre familia, empresa y patrimonio.</p>
-      <p class="socia-p">Trabaja desde un enfoque sistémico e interdisciplinario que integra negociación basada en intereses, comunicación consciente y gestión del factor humano para construir acuerdos sostenibles y duraderos. Es conferencista y autora de contenido orientado a la formación de profesionales del derecho.</p>
+      <p class="socia-p">Diseña e implementa estrategias legales en conflictos familiares, empresariales y patrimoniales, con foco en planificación sucesoria y empresa familiar. Se especializa en la negociación de acuerdos complejos, orientados a prevenir la escalada del conflicto y construir soluciones sostenibles en el tiempo.</p>
+      <p class="socia-p">Es además conferencista y desarrolla contenidos sobre abordaje interdisciplinario del conflicto.</p>
       <div class="socia-tags">
         <span class="socia-tag">Derecho de Familia</span>
         <span class="socia-tag">Negociación</span>
@@ -430,8 +473,53 @@
       </a>
     </div>
     <div class="socia-img-col reveal-right">
-      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&q=95&fit=crop&auto=format"
+      <img src="./ALE ESQUIVEL.jpeg"
            alt="Dra. Alejandra Gómez Esquivel" class="socia-img" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO INTERDISCIPLINARIO -->
+<section id="equipo-apoyo-ext">
+  <div class="equipo-ext-inner">
+    <div class="equipo-ext-head reveal">
+      <span class="eyebrow eyebrow-center">Equipo interdisciplinario</span>
+      <h2 class="equipo-ext-h2">
+        Más allá de lo jurídico
+        <em>profesionales que amplían la mirada del conflicto</em>
+      </h2>
+    </div>
+    <div class="equipo-ext-grid">
+      <div class="miembro-card reveal" style="transition-delay:0s">
+        <div class="miembro-header">
+          <div class="miembro-img-wrap">
+            <img src="./FOTO LILIAN.jpeg" alt="Lilian Azzati" class="miembro-img" loading="lazy"
+                 onerror="this.style.display='none';this.parentElement.style.background='var(--bg-warm)';this.parentElement.innerHTML='<i class=\'fa-solid fa-user\' style=\'font-size:2rem;color:var(--soft);margin:auto;display:flex;align-items:center;justify-content:center;height:100%\'></i>'"/>
+          </div>
+          <div>
+            <div class="miembro-name">Lilian Azzati</div>
+            <div class="miembro-title">Médica (UBA) · Psicoterapeuta</div>
+          </div>
+        </div>
+        <div class="miembro-rule"></div>
+        <p class="miembro-p">Integra el abordaje interdisciplinario del estudio, aportando una mirada experta sobre la dinámica de los vínculos en situaciones de conflicto como facilitadora en procesos de desarrollo humano. Su intervención permite comprender los aspectos emocionales que inciden en la toma de decisiones, facilitando procesos de comunicación y construcción de acuerdos sostenibles.</p>
+        <a href="https://wa.me/5491125497128" target="_blank" class="miembro-tel"><i class="fa-brands fa-whatsapp"></i> +54 9 11 2549-7128</a>
+      </div>
+      <div class="miembro-card reveal" style="transition-delay:.1s">
+        <div class="miembro-header">
+          <div class="miembro-img-wrap">
+            <img src="./FOTO MAYRA PÉREZ.jpeg" alt="Mayra Yamila Pérez" class="miembro-img" loading="lazy"
+                 onerror="this.style.display='none';this.parentElement.style.background='var(--bg-warm)';this.parentElement.innerHTML='<i class=\'fa-solid fa-user\' style=\'font-size:2rem;color:var(--soft);margin:auto;display:flex;align-items:center;justify-content:center;height:100%\'></i>'"/>
+          </div>
+          <div>
+            <div class="miembro-name">Mayra Yamila Pérez</div>
+            <div class="miembro-title">Abogada (UBA)</div>
+          </div>
+        </div>
+        <div class="miembro-rule"></div>
+        <p class="miembro-p">Interviene en el desarrollo e implementación de estrategias de los casos de familia y sucesiones del estudio. Desarrolla su práctica con foco en conflictos laborales, aportando herramientas para la organización y gestión de las relaciones entre empresa y trabajadores.</p>
+        <a href="https://wa.me/5491138643520" target="_blank" class="miembro-tel"><i class="fa-brands fa-whatsapp"></i> +54 9 11 3864-3520</a>
+      </div>
     </div>
   </div>
 </section>
@@ -499,8 +587,8 @@
   <div class="f-inner">
     <div class="f-main">
       <div class="f-brand">
-        <img src="./logo-te-f.png" alt="Tucci & Esquivel" class="f-logo"/>
-        <p class="f-brand-desc">Estudio jurídico especializado en Empresa, Familia y Sucesiones. Vicente López, Buenos Aires, Argentina.</p>
+        <img src="./logo-te-f.png" alt="Tucci | Esquivel" class="f-logo"/>
+        <p class="f-brand-desc">Estudio jurídico especializado en Empresa, Familia y Sucesiones. Actuamos en CABA y Provincia de Buenos Aires.</p>
       </div>
       <div class="f-col">
         <span class="f-col-title">Navegación</span>
@@ -526,12 +614,12 @@
           <div class="f-contact-item"><i class="fa-solid fa-phone"></i><span>+54 9 11 6491-3803</span></div>
           <div class="f-contact-item"><i class="fa-solid fa-phone"></i><span>+54 9 11 6644-5720</span></div>
           <div class="f-contact-item"><i class="fa-brands fa-instagram"></i><span>@tucciesquivel.estudio</span></div>
-          <div class="f-contact-item"><i class="fa-solid fa-location-dot"></i><span>Ávalos 2869<br/>Vicente López, Bs. As.</span></div>
+          <div class="f-contact-item"><i class="fa-solid fa-location-dot"></i><span>Ávalos 2869, Vicente López<br/>CABA y Pcia. de Bs. As.</span></div>
         </div>
       </div>
     </div>
     <div class="f-bot">
-      <p>© 2026 Tucci & Esquivel Estudio Jurídico. Todos los derechos reservados.</p>
+      <p>© 2026 Tucci | Esquivel Estudio Jurídico. Todos los derechos reservados.</p>
       <p>Desarrollado por <a href="https://www.instagram.com/sageedev/" target="_blank">@sageeDev</a></p>
     </div>
   </div>
