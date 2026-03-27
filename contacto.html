@@ -266,7 +266,7 @@
     <a href="contacto.html" class="cur">Contacto</a>
   </nav>
   <a href="https://wa.me/5491164913803" target="_blank" class="btn btn-gold h-cta" style="padding:.62rem 1.4rem;font-size:.6rem">
-    <i class="fa-brands fa-whatsapp"></i> Consultar
+    <i class="fa-brands fa-whatsapp"></i> Agendar entrevista
   </a>
 </header>
 <button id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
@@ -293,7 +293,7 @@
     <div class="ph-eyebrow">Estamos para ayudarte</div>
     <h1 class="ph-h1">
       Contacto
-      <em>respondemos a la brevedad</em>
+      <em>agendá tu entrevista con una de las socias</em>
     </h1>
   </div>
   <div class="ph-breadcrumb">
@@ -311,11 +311,11 @@
     <div class="ct-info reveal-left">
       <span class="eyebrow">El estudio</span>
       <h2 class="ct-h2">
-        Hablemos sobre<br/>tu situación
-        <em>el primer paso es una conversación</em>
+        Agendá tu<br/>entrevista
+        <em>coordinamos un espacio para conversar</em>
       </h2>
       <div class="ct-rule"></div>
-      <p class="ct-p">Contanos brevemente tu situación y una de las socias te orientará sobre cómo podemos ayudarte. Sin compromisos ni formalidades previas.</p>
+      <p class="ct-p">Completá el formulario o contactanos directamente para coordinar una entrevista con una de las socias. Es el espacio para conversar sobre tu situación y definir juntos los pasos a seguir.</p>
 
       <div class="ct-items">
         <div class="ct-row">
@@ -336,7 +336,7 @@
           <div class="ct-ico"><i class="fa-solid fa-envelope"></i></div>
           <div class="ct-row-body">
             <div class="ct-row-label">Correo electrónico</div>
-            <div class="ct-row-val"><a href="mailto:tucciesquivel.estudio@gmail.com">tucciesquivel.estudio@gmail.com</a></div>
+            <div class="ct-row-val"><a href="/cdn-cgi/l/email-protection#403435232329253331352936252c6e2533343524292f00272d21292c6e232f2d"><span class="__cf_email__" data-cfemail="7f0b0a1c1c161a0c0e0a16091a13511a0c0b0a1b16103f18121e1613511c1012">[email&#160;protected]</span></a></div>
           </div>
         </div>
         <div class="ct-row">
@@ -349,7 +349,7 @@
       </div>
 
       <div class="ct-abogadas">
-        <div class="ct-abogadas-label">Contacto directo por WhatsApp</div>
+        <div class="ct-abogadas-label">Agendá tu entrevista directamente</div>
         <a href="https://wa.me/5491164913803" target="_blank" class="ct-abogada">
           <div>
             <div class="ct-abogada-name">Dra. Noelia Tucci</div>
@@ -379,8 +379,8 @@
 
     <!-- Formulario -->
     <div class="form-wrap reveal-right" style="transition-delay:.1s">
-      <div class="form-title">Envianos tu consulta</div>
-      <div class="form-subtitle">Completá el formulario y te contactamos por WhatsApp</div>
+      <div class="form-title">Coordiná tu entrevista</div>
+      <div class="form-subtitle">Completá el formulario y te contactamos para agendar</div>
 
       <div class="form-destination" id="formDestination">
         <i class="fa-brands fa-whatsapp"></i>
@@ -436,7 +436,7 @@
 
         <!-- Áreas -->
         <div class="form-field full">
-          <label class="form-label">Área de consulta <span>*</span></label>
+          <label class="form-label">Área sobre la que quiero conversar <span>*</span></label>
           <div class="areas-grid">
             <label class="area-check">
               <input type="checkbox" name="area" value="empresa"/>
@@ -466,25 +466,25 @@
           <label class="form-label" for="urgencia">Nivel de urgencia</label>
           <select class="form-select" id="urgencia">
             <option value="">Seleccioná una opción</option>
-            <option value="consulta">Consulta general, sin urgencia</option>
-            <option value="pronto">Necesito respuesta pronto (esta semana)</option>
-            <option value="urgente">Urgente (plazo judicial o situación activa)</option>
+            <option value="consulta">Sin urgencia, quiero agendar cuando haya disponibilidad</option>
+            <option value="pronto">Prefiero agendar esta semana</option>
+            <option value="urgente">Urgente — hay un plazo o situación activa</option>
           </select>
         </div>
 
         <!-- Mensaje -->
         <div class="form-field full">
           <label class="form-label" for="mensaje">Describí brevemente tu situación <span>*</span></label>
-          <textarea class="form-textarea" id="mensaje" placeholder="Contanos de qué se trata tu consulta. No es necesario entrar en detalles — solo lo suficiente para orientarnos."></textarea>
+          <textarea class="form-textarea" id="mensaje" placeholder="Describí brevemente tu situación para que podamos orientarte al agendar. No es necesario entrar en detalles."></textarea>
         </div>
       </div>
 
       <div class="form-submit-wrap">
         <button class="form-submit" id="formSubmit" type="button">
           <i class="fa-brands fa-whatsapp"></i>
-          Enviar consulta por WhatsApp
+          Coordinar entrevista por WhatsApp
         </button>
-        <p class="form-note">Al hacer clic serás redirigido a WhatsApp con tu consulta pre-cargada. No almacenamos tus datos.</p>
+        <p class="form-note">Al hacer clic serás redirigido a WhatsApp para coordinar tu entrevista. No almacenamos tus datos.</p>
       </div>
     </div>
 
@@ -698,14 +698,14 @@
     const profLabel = target === 'tucci' ? 'Dra. Noelia Tucci' : 'Dra. Alejandra Gómez Esquivel';
 
     const lines = [
-      `Hola ${profLabel}, mi nombre es *${nombre}*.`,
+      `Hola ${profLabel}, mi nombre es *${nombre}*. Me comunico para coordinar una entrevista.`,
       ``,
-      `📋 *Área de consulta:* ${areaStr}`,
+      `📋 *Área sobre la que quiero conversar:* ${areaStr}`,
       `⏱ *Urgencia:* ${urgStr}`,
     ];
     if (telefono) lines.push(`📞 *Teléfono:* ${telefono}`);
     if (email)    lines.push(`✉️ *Email:* ${email}`);
-    lines.push(``, `💬 *Consulta:*`, mensaje, ``, `_Enviado desde tucciesquivel.estudio_`);
+    lines.push(``, `💬 *Motivo / contexto:*`, mensaje, ``, `_Enviado desde tucciesquivel.estudio_`);
 
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
   });
